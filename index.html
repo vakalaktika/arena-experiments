@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#071016" />
+  <title>WORD//SIGNAL — 20 Questions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div id="flash"></div>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◈</span><span>WORD<span class="slash">//</span>SIGNAL</span><small>DETERMINISTIC INFERENCE LAB</small></div>
+      <div class="top-actions">
+        <div class="score-pill"><span>SCORE</span><b id="score">0000</b></div>
+        <button class="icon-btn" id="pauseBtn" aria-label="Pause">Ⅱ</button>
+      </div>
+    </header>
+
+    <section id="startScreen" class="screen start-screen">
+      <div class="eyebrow">EXPERIMENT 01 <i></i> 20 QUESTIONS</div>
+      <h1>Can you make<br><em>the signal</em> think?</h1>
+      <p class="intro">Ask questions. Watch the probability field collapse. The machine has a word in mind — your job is to make it obvious.</p>
+      <button class="primary-btn" id="startBtn"><span>INITIALIZE GAME</span><b>↗</b></button>
+      <div class="how"><span>TYPE A QUESTION</span><span>↳</span><span>READ THE SIGNAL</span><span>↳</span><span>FIND THE WORD</span></div>
+      <div class="best-start">LOCAL BEST <b id="startBest">0000</b></div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <div class="game-head">
+        <div><div class="eyebrow">ACTIVE INFERENCE <i></i> ROUND <b id="roundNum">01</b></div><h2>Ask anything. <em>Be specific.</em></h2></div>
+        <div class="question-count"><b id="questionCount">00</b><span>/ 20<br>QUESTIONS</span></div>
+      </div>
+
+      <div class="play-grid">
+        <div class="main-column">
+          <div class="chat-card">
+            <div class="card-label"><span><i class="live-dot"></i> LIVE TRANSCRIPT</span><span id="statusText">AWAITING INPUT</span></div>
+            <div id="transcript" class="transcript"><div class="empty-state"><div class="pulse-ring">?</div><p>Your question goes here.<br><span>The answer is deterministic.</span></p></div></div>
+          </div>
+          <div class="input-wrap">
+            <input id="questionInput" autocomplete="off" maxlength="90" placeholder="Is it something you can hold?" aria-label="Type your question" />
+            <button id="askBtn" class="ask-btn">ASK <span>↵</span></button>
+          </div>
+          <div class="suggestions"><span>TRY ONE</span><button>Is it alive?</button><button>Is it found outdoors?</button><button>Is it bigger than a toaster?</button></div>
+          <div class="bottom-row"><span class="key-hint"><kbd>ENTER</kbd> to send</span><button class="ghost-btn" id="guessBtn">MAKE THE GUESS <span>→</span></button></div>
+        </div>
+
+        <aside class="signal-panel">
+          <div class="panel-title"><span>PROBABILITY FIELD</span><span class="blink">● REC</span></div>
+          <div class="gauge-area">
+            <div class="gauge-ring"><div class="gauge-progress" id="gaugeProgress"></div><div class="gauge-core"><span id="confidence">0</span><small>% CONFIDENCE</small></div></div>
+            <div class="temperature"><span>TEMPERATURE</span><b id="temperature">0.92</b><div class="temp-bar"><i id="tempBar"></i></div><small>LOW = MORE CERTAIN</small></div>
+          </div>
+          <div class="likely-label">MOST LIKELY WORD <span>LIVE</span></div>
+          <div id="likelyWord" class="likely-word">—</div>
+          <div id="candidateList" class="candidate-list"></div>
+          <div class="signal-footer"><span>ENTROPY</span><b id="entropy">HIGH</b><span class="mini-wave">∿∿∿</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pauseScreen" class="screen modal-screen hidden"><div class="modal"><div class="eyebrow">SIGNAL PAUSED</div><h2>Take a breath.</h2><p>The word is still here. Your progress is safe.</p><button class="primary-btn" id="resumeBtn"><span>RESUME</span><b>↗</b></button><button class="text-btn" id="quitBtn">END RUN</button></div></section>
+    <section id="gameOverScreen" class="screen modal-screen hidden"><div class="modal result-modal"><div id="resultEyebrow" class="eyebrow">INFERENCE COMPLETE</div><h2 id="resultTitle">The signal found it.</h2><p id="resultCopy"></p><div class="result-word"><span>THE WORD WAS</span><b id="secretReveal">—</b></div><div class="result-stats"><div><b id="finalScore">0000</b><span>SCORE</span></div><div><b id="finalConfidence">0%</b><span>CONFIDENCE</span></div><div><b id="finalQuestions">0</b><span>QUESTIONS</span></div></div><button class="primary-btn" id="restartBtn"><span>RUN IT BACK</span><b>↗</b></button><div class="highscore-line">HIGH SCORES <b id="highScores"></b></div></div></section>
+  </main>
+  <canvas id="particles"></canvas>
+  <script src="app.js"></script>
+</body>
+</html>
